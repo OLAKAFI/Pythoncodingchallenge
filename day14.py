@@ -146,3 +146,71 @@ countries_start_E = filter(lambda x: True if str(x[0]) == 'E'else False, countri
 print('Countries that starts with E: ', list(countries_start_E))
 
 # Chain two or more list iterators (eg. arr.map(callback).filter(callback).reduce(callback))
+# UPPERCASE AND START WITH E
+upper = map(lambda x: x.upper(), countries)
+E = filter(lambda y: True if str(y[0]) == 'E' else False, list(upper))
+print(list(E))
+
+# Declare a function called get_string_lists which takes a list as a parameter and then returns a list containing only string items.
+def get_string_lists(lists):
+    for i in lists:
+        if type(i) == str:
+            print(i)
+get_string_lists(['ola',12,'Bola', 12, 'Maoc'])
+
+print('---------------------------------------------------------------------------------------------')
+
+# 11 Use reduce to sum all the numbers in the numbers list.
+numbers_str = list(map(lambda x: str(x), numbers))
+reduce_number = reduce(lambda x,y: int(x) + int(y), numbers_str)
+print('Used reduce to sum all number in the list: ', reduce_number)
+
+print('---------------------------------------------------------------------------------------------')
+
+# Use reduce to concatenate all the countries and to produce this sentence: 
+# Estonia, Finland, Sweden, Denmark, Norway, and Iceland are north European countries
+concat_countries = reduce(lambda x,y : x + ', ' + y, countries)
+print(concat_countries)
+
+# Declare a function called categorize_countries that returns a list of countries with some common pattern 
+# (you can find the countries list in this repository as countries.js(eg 'land', 'ia', 'island', 'stan')).
+from countries_data import countries as cd
+categorize_countries_land = filter(lambda x: True if 'land' in x else False, cd)
+categorize_countries_island = filter(lambda x: True if 'Island' in x else False, cd)
+print('The list of countries with land: ', list(categorize_countries_land))
+print('The list of countries with island: ', list(categorize_countries_island))
+
+print('----------------------------------------------------------------------------------------------------')
+# Create a function returning a dictionary, where keys stand for starting letters of countries 
+# and values are the number of country names starting with that letter
+def country_dict(cd):
+    count = {}
+    for i in cd:
+        first_letter= i[0].upper()
+        if first_letter not in count:
+            count[first_letter] = 1
+        else:
+            count[first_letter] += 1
+    print('List of first letters and their frequencies: ', {i[0]:count})
+country_dict(cd) 
+
+print('----------------------------------------------------------------------------------------------')
+
+# Declare a get_first_ten_countries function - it returns a list of first ten countries from the countries.js list in the data folder.
+get_first_ten_countries = [x for x in cd[:10]]
+print('List of the first ten countries: ', list(get_first_ten_countries))  
+
+print('--------------------------------------------------------------------------------------------------------------------')
+
+from countries_database import database as cdb
+cdb.sort(key=lambda x: x["languages"])
+print('The country database sorted with by languages: ', cdb)
+
+print('--------------------------------------------------------------------------------------------------------------------')
+
+cdb.sort(key=lambda x: x["population"])
+print('The country database sorted with by population: ', cdb)
+print('--------------------------------------------------------------------------------------------------------------------')
+cdb.sort(key=lambda x: x["population"], reverse=True)
+populated_country_10 = [i['name'] for i in cdb]
+print('The top 10 most populated countries: ', populated_country_10[:10])
