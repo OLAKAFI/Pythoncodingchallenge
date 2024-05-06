@@ -96,14 +96,31 @@ print('-------------------------------------------------------------------------
 #     new_i = re.findall('[i]', paragraph, re.I)
 #     print(new_i)
 
-# Write a pattern which identifies if a string is a valid python variable
+# Write a pattern which identifies if a string is a valid python variablet
+# python_var_name = input('Please eneter your python varriable name here: ')
+# is_valid_varriable = [ python_var_name if re.findall(r'^\d', python_var_name) is True else False, 'This is an invalid python varriable name']
+# print('Valid python variable: ',python_var_name)
 
+# stringed = '4firstaname'
+# print(int(stringed[0]))
+# print(type(int(stringed[0])))
+# print(int(stringed[1]))
+
+
+def is_valid_varriable(var_name):
+#     if '-' and '/' and '*' and '+' in var_name[:]:
+#          print('This username is invalid, variables should not')
+    if str(range(10)) in var_name[0]:
+         print('This username is invalid, varriable should not start with digits')
+    else:
+         print('This username is valid')
+is_valid_varriable('6firstame')
 
 # Clean the following text. After cleaning, count three most frequent words in the string.
 
 from collections import Counter
 sentence = '%I $am@% a %tea@cher%, &and& I lo%#ve %tea@ching%;. There $is nothing; &as& mo@re rewarding as educa@ting &and& @emp%o@wering peo@ple. ;I found tea@ching m%o@re interesting tha@n any other %jo@bs. %Do@es thi%s mo@tivate yo@u to be a tea@cher!?'
-clean_text = re.sub('%|@|&|!|#|$|;','', sentence)
+clean_text = re.sub(r'%|$|@|&|!|#|;','', sentence)
 print('Cleaned Sentence: ', clean_text)
 
 
@@ -113,3 +130,4 @@ top_3 = new_top[:3]
 print(top_3)
 list_top_10 = [(word,count) for word,count in top_3]
 print(list(list_top_10))
+

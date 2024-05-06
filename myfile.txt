@@ -1,0 +1,2 @@
+The default mode of open is reading, so we do not have to specify 'r' or 'rt'. 
+I have created and saved a file named reading_file_example.txt in the files directory. Let us see how it is done:Add thisAdd thisAdd thisAdd thisAdd thisAdd thisAdd thisAdd thisAdd thisAdd thisAdd thisAdd thisAdd thisAdd thisAdd thisAdd thisAdd thisAdd thisAdd thisAdd thisAdd thisAdd thisAdd thisAdd thisAdd thisAdd thisAdd thisAdd thisAdd thisAdd thisAdd thisAdd this
