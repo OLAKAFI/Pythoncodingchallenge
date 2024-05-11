@@ -61,9 +61,50 @@ print('-------------------------------------------------------------------------
 # EXERCISE
 # Read this url and find the 10 most frequent words
 import requests
-url = 'http://www.gutenberg.org/files/1112/1112.txt'
-response = requests.get(url)
-print(response)
-print(response.headers)
-print(response.text)
+from parsel import Selector
+from collections import Counter
+url = 'https://api.slingacademy.com/v1/examples/sample-page.html'
+response = requests.get(url).text
+# print(response)
+selector = Selector(response)
+# print(selector)
+plain_text = selector.xpath('//text()').getall()  #print out only text and exclude html tags
+words = " ".join(plain_text)
+# print(words)
 
+words_split = words.split()
+words_count = Counter(words_split)
+print(words_count)
+top_10 = words_count.most_common(10)
+print(top_10)
+
+print('---------------------------------------------------------------------------------')
+
+import requests
+api = 'https://api.thecatapi.com/v1/breeds'
+response= requests.get(api).json()
+print(response)
+
+for items in response:
+    for key, value in items['weight'].items():
+        if 'metric' in key :
+            result = key, value
+            print(result)
+
+print('-------------------------------------------------------------------------------------------')
+
+import requests
+from bs4 import BeautifulSoup
+
+url= 'https://archive.ics.uci.edu/ml/datasets.php'
+response= requests.get(url)
+songSoup = BeautifulSoup(response.text, features='lxml')
+data_dict = []
+for song in songSoup.findAll('tr')[1:101]:
+    tittle =song.findAll('a')[0].string
+    artist =song.findAll('a')[1].string
+    print(tittle, ',', artist)
+    data_dict[tittle] = [artist]
+print(data_dict)
+
+            
