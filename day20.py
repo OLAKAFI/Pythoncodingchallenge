@@ -98,7 +98,7 @@ from bs4 import BeautifulSoup
 
 url= 'https://archive.ics.uci.edu/ml/datasets.php'
 response= requests.get(url)
-songSoup = BeautifulSoup(response.text, features='lxml')
+songSoup = BeautifulSoup(response.content, 'lxml')
 data_dict = []
 for song in songSoup.findAll('tr')[1:101]:
     tittle =song.findAll('a')[0].string
